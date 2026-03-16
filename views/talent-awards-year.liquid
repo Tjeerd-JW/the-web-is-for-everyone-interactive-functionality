@@ -1,0 +1,17 @@
+{% render 'partials/head.liquid', title: 'awards', path: path  %}
+
+{% include 'partials/article.liquid', style: 'banner' %}
+
+{% comment %} {{ nominations | json }} {% endcomment %}
+{% for nominee in nominations %}
+  <article>
+    <h2>
+      {{ nominee.title }}
+    </h2>
+    <p>
+      {{ nominee.institution }}
+    </p>
+  </article>
+{% endfor %}
+
+{% render 'partials/foot.liquid' %}

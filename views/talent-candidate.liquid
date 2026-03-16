@@ -1,0 +1,45 @@
+{% render 'partials/head.liquid', title: 'candidate' %}
+
+{% assign imgURL = 'https://fdnd-agency.directus.app/assets/' | append: candidate.profile_picture %}
+{% assign contentText = '<strong>Instelling:</strong> '
+  | append: candidate.institution
+  | append: '<br><strong>Opleiding:</strong> '
+  | append: candidate.course
+  | append: '<br><strong>Variant:</strong> '
+  | append: candidate.education_variant
+  | append: '<br><strong>Huidige student</strong>'
+  | append: '<br><strong>Vooropleiding:</strong> '
+  | append: candidate.previous_course
+%}
+
+{% include 'partials/article.liquid',
+  style: 'banner video',
+  content: contentText,
+  title: candidate.title,
+  imgURL: imgURL,
+  imgALT: candidate.title
+%}
+
+{% include 'partials/article.liquid',
+  style: 'img-left',
+  title: 'Introductie',
+  content: candidate.body,
+  imgURL: imgURL,
+  imgALT: candidate.title
+%}
+
+{% include 'partials/article.liquid',
+  style: '',
+  title: 'nominatie hogeschool',
+  content: candidate.institution_body,
+  imgURL: 'https://www.deassociatedegree.nl/wp-content/uploads/2024/02/HvA.png',
+  imgALT: candidate.title
+%}
+
+{% include 'partials/quote.liquid',
+  title: 'Aanbeveling externe stakeholder',
+  quote: candidate.external_stake_holder_body,
+  author: candidate.external_stake_holder
+%}
+
+{% render 'partials/foot.liquid' %}

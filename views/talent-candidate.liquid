@@ -20,26 +20,41 @@
   imgALT: candidate.title
 %}
 
+{% assign candidateText = candidate.body | default: fakeData.body %}
+
 {% include 'partials/article.liquid',
   style: 'img-left',
   title: 'Introductie',
-  content: candidate.body,
+  content: candidateText,
   imgURL: imgURL,
   imgALT: candidate.title
 %}
 
+{% assign schoolText = candidate.institution_body | default: fakeData.institution_body %}
 {% include 'partials/article.liquid',
   style: '',
   title: 'nominatie hogeschool',
-  content: candidate.institution_body,
+  content: schoolText,
   imgURL: 'https://www.deassociatedegree.nl/wp-content/uploads/2024/02/HvA.png',
   imgALT: candidate.title
 %}
 
-{% include 'partials/quote.liquid',
-  title: 'Aanbeveling externe stakeholder',
-  quote: candidate.external_stake_holder_body,
-  author: candidate.external_stake_holder
-%}
+{% assign quoteText = candidate.external_stake_holder_body | default: fakeData.external_stake_holder_body %}
+{% assign quoteAuthor = candidate.external_stake_holder | default: fakeData.external_stake_holder %}
+{% include 'partials/quote.liquid', title: 'Aanbeveling externe stakeholder', quote: quoteText, author: quoteAuthor %}
 
+<section>
+  <article>
+    <ul>
+      {% for comment in comments %}
+        <li>
+          <h4>
+            {{ comment.name }}
+          </h4>
+          <p>{{ comment.comment }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </article>
+</section>
 {% render 'partials/foot.liquid' %}

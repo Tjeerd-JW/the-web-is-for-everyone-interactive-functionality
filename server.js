@@ -85,15 +85,14 @@ app.get('/talent-awards/:year', async function (request, response) {
 
 
 
-app.get('/talent-awards/:year/:name', async function (request, response) {
+app.get('/talent-awards/:year/:id', async function (request, response) {
 
-   // uncomment wanneer api het doet
-   // const candidateParams = new URLSearchParams( {
-   //    'filter[title]': request.params.name
-   // })
-   // const candidateResponse = await fetch(apiURL + 'nominations?' + candidateParams)
-   // const candidateResponseJSON = await candidateResponse.json()
-
+   // kandidaat data ophalen uit de database
+   const candidateParams = new URLSearchParams({
+      'filter[id]': request.params.id
+   })
+   const candidateResponse = await fetch(apiURL + 'nominations?' + candidateParams)
+   const candidateResponseJSON = await candidateResponse.json()
    // fake api data
    const fakeData = [
       {
@@ -114,13 +113,23 @@ app.get('/talent-awards/:year/:name', async function (request, response) {
          year: 2026
       }
    ]
-   const candidate = fakeData.find(c => c.slug === request.params.name)
+   const fakeCandidate = fakeData[0]
+
+   // comments kandidaat inladen
+   const commentParams = new URLSearchParams({
+      'filter[nomination]': request.params.id,
+      'sort[date_created]': 'desc'
+   })
+   const commentResponse = await fetch(apiURL +'nominations_comments?' + commentParams)
+   const commentResponseJSON = await commentResponse.json()
+   console.log(commentResponseJSON)
 
    response.render('talent-candidate.liquid', {
       // uncomment wanneer api het doet
-      // candidate: candidateResponseJSON.data[0],
-      candidate: candidate,
-      year: request.params.year
+      candidate: candidateResponseJSON.data[0],
+      fakeData: fakeCandidate,
+      year: request.params.year,
+      comments: commentResponseJSON.data
    })
 })
 

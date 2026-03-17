@@ -43,13 +43,25 @@
 {% assign quoteAuthor = candidate.external_stake_holder | default: fakeData.external_stake_holder %}
 {% include 'partials/quote.liquid', title: 'Aanbeveling externe stakeholder', quote: quoteText, author: quoteAuthor %}
 
-<section>
+<section class="article-layout comments-section">
+  <form method="post" action="/talent-awards/2026/{{candidate.id}}">
+    <label>
+      Naam*
+      <input required type="text" name="name">
+    </label>
+    <label>
+      Reactie*
+
+      <textarea required name="comment"></textarea>
+    </label>
+    <button type="submit">Reageer</button>
+  </form>
   <article>
     <ul>
       {% for comment in comments %}
         <li>
           <h4>
-            {{ comment.name }}
+            {{ comment.name }}, <span>{{comment.date_created |  date: " %d %B, %Y %H:%M"}}</span>
           </h4>
           <p>{{ comment.comment }}</p>
         </li>

@@ -120,6 +120,7 @@ header {
         gap: 2rem;
         max-width: 1400px;
         margin: auto;
+        padding: 0 .5rem;
 
         @media (min-width: 800px) {
             grid-template-columns: 1fr 1fr;
@@ -227,6 +228,78 @@ header {
     }
 }
 
+.comments-section {
+    padding-top: 2rem;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: .75rem;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 .5rem;
+        background-color: var(--color-primary-500);
+        border-radius: 16px;
+        padding: 12px;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            input,
+            textarea {
+                border-radius: 8px;
+            }
+
+            textarea {
+                width: 100%;
+                resize: vertical;
+                min-height: 150px;
+            }
+
+        }
+
+        label:first-child {
+            grid-column: 1;
+            grid-row: 1;
+
+        }
+
+        label:nth-child(2) {
+            grid-column: 1 / -1;
+
+        }
+
+        button {
+            grid-column: 1;
+        }
+    }
+
+    article {
+        max-width: 1200px;
+        margin-top: 2rem;
+
+        ul {
+            list-style: none;
+            gap: .75rem;
+            display: flex;
+            flex-direction: column;
+
+            li {
+                border-left: 3px solid var(--color-neutral-800);
+                padding-left: 5px;
+                h4{
+                    span{
+                        font-weight: lighter;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .banner {
     background-color: var(--color-primary-100);
 
@@ -283,10 +356,11 @@ header {
     }
 }
 
-.video{
-    figure{
+.video {
+    figure {
         height: 350px;
-        img{
+
+        img {
             height: 300px;
         }
     }

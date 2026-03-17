@@ -118,11 +118,10 @@ app.get('/talent-awards/:year/:id', async function (request, response) {
    // comments kandidaat inladen
    const commentParams = new URLSearchParams({
       'filter[nomination]': request.params.id,
-      'sort[date_created]': 'desc'
+      'sort': '-date_created'
    })
-   const commentResponse = await fetch(apiURL +'nominations_comments?' + commentParams)
+   const commentResponse = await fetch(apiURL + 'nominations_comments?' + commentParams)
    const commentResponseJSON = await commentResponse.json()
-   console.log(commentResponseJSON)
 
    response.render('talent-candidate.liquid', {
       // uncomment wanneer api het doet
@@ -131,6 +130,24 @@ app.get('/talent-awards/:year/:id', async function (request, response) {
       year: request.params.year,
       comments: commentResponseJSON.data
    })
+})
+
+app.post('/talent-awards/:year/:id', async function (request, response) {
+   await fetch(apiURL + 'nominations_comments', {
+      method: 'POST',
+      body: JSON.stringify({
+         nomination: request.params.id,
+         name: request.body.name,
+         comment: request.body.comment
+      }),
+      headers: {
+         'Content-Type': 'application/json;charset=UTF-8'
+
+      }
+   })
+   console.log(request.body)
+   response.redirect(303, '/talent-awards/' + request.params.year + '/' + request.params.id)
+
 })
 
 

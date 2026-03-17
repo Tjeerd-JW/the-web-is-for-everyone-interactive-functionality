@@ -250,6 +250,7 @@ header {
             input,
             textarea {
                 border-radius: 8px;
+                padding: .5em 0;
             }
 
             textarea {
@@ -257,13 +258,12 @@ header {
                 resize: vertical;
                 min-height: 150px;
             }
-
         }
 
         label:first-child {
             grid-column: 1;
             grid-row: 1;
-
+            min-height: 20px;
         }
 
         label:nth-child(2) {
@@ -273,6 +273,14 @@ header {
 
         button {
             grid-column: 1;
+            width: clamp(160px, 75%, 300px);
+            height: 30px;
+            background-color: var(--color-primary-600);
+            border-radius: var(--button-radius);
+            color: var(--color-neutral-800);
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid var(--color-neutral-800);
         }
     }
 
@@ -289,8 +297,9 @@ header {
             li {
                 border-left: 3px solid var(--color-neutral-800);
                 padding-left: 5px;
-                h4{
-                    span{
+
+                h4 {
+                    span {
                         font-weight: lighter;
                         font-style: italic;
                     }

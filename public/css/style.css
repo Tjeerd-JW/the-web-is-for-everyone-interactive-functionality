@@ -228,6 +228,49 @@ header {
     }
 }
 
+.nominee-list {
+    article {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 1400px;
+        margin: auto;
+        padding: 0 .5rem;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin: auto;
+            width: clamp(300px, 100%, 1000px);
+
+            li {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin: auto;
+                background-color: var(--color-primary-400);
+                padding: 1.5rem;
+                border-radius: 15px;
+                gap: .25rem;
+width: 275px;
+                h3 {
+                    grid-row: 2;
+                }
+
+                img {
+                    grid-row: 1;
+                    border-radius: var(--img-radius);
+                    width: 100%;
+                }
+
+                p {}
+
+                a {}
+            }
+        }
+    }
+}
+
 .comments-section {
     padding-top: 2rem;
 

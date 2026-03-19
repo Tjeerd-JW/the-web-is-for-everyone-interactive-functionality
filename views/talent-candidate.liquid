@@ -43,7 +43,16 @@
 {% assign quoteAuthor = candidate.external_stake_holder | default: fakeData.external_stake_holder %}
 {% include 'partials/quote.liquid', title: 'Aanbeveling externe stakeholder', quote: quoteText, author: quoteAuthor %}
 
-<section class="article-layout comments-section">
+
+  <section id="pop-up" class="hidden article-layout comment-popup">
+    <article>
+      <h3>Reactie gedeeld!</h3>
+      <button class="primary-button" onclick="closePopup()" >sluiten</button>
+    </article>
+  </section>
+
+
+<section class="article-layout comments-section" id="comments">
   <form method="post" action="/talent-awards/2026/{{candidate.id}}">
     <label>
       Naam*
@@ -73,4 +82,8 @@
     {% endif %}
   </article>
 </section>
+
+<script src="/js/candidate.js"></script>
+
+
 {% render 'partials/foot.liquid' %}

@@ -252,7 +252,8 @@ header {
                 padding: 1.5rem;
                 border-radius: 15px;
                 gap: .25rem;
-width: 275px;
+                width: 275px;
+
                 h3 {
                     grid-row: 2;
                 }
@@ -293,7 +294,20 @@ width: 275px;
             input,
             textarea {
                 border-radius: 8px;
-                padding: .5em 0;
+                padding: 1em 0;
+
+                &:user-valid {
+                    outline: 2px solid rgb(1, 213, 5);
+                }
+
+                &:user-invalid {
+                    outline: 2px solid var(--color-accent-100);
+
+                }
+
+                &:focus-visible {
+                    outline: 2px dashed var(--color-accent-300);
+                }
             }
 
             textarea {

@@ -44,16 +44,10 @@
 {% include 'partials/quote.liquid', title: 'Aanbeveling externe stakeholder', quote: quoteText, author: quoteAuthor %}
 
 
-  <section id="pop-up" class="hidden article-layout comment-popup">
-    <article>
-      <h3>Reactie gedeeld!</h3>
-      <button class="primary-button" onclick="closePopup()" >sluiten</button>
-    </article>
-  </section>
-
-
 <section class="article-layout comments-section" id="comments">
   <form method="post" action="/talent-awards/2026/{{candidate.id}}">
+    <h3>Reactie achterlaten</h3>
+
     <label>
       Naam*
       <input required type="text" name="name">
@@ -65,25 +59,36 @@
     </label>
     <button type="submit">Reageer</button>
   </form>
+
+<section id="pop-up" class="hidden article-layout comment-popup">
   <article>
-    {% if comments.length > 0  %}
+    <h3></h3>
+    <p></p>
+    <button class="primary-button" onclick="closePopup()">sluiten</button>
+  </article>
+</section>
+
+
+  <article>
+    {% if comments.length > 0 %}
+      <h4>Reacties, {{ comments.length }}</h4>
       <ul>
         {% for comment in comments %}
           <li>
-            <h4>
+            <h5>
               {{ comment.name | escape }}, <span>{{ comment.date_created | date: ' %d %B, %Y %H:%M' }}</span>
-            </h4>
+            </h5>
             <p>{{ comment.comment | escape }}</p>
           </li>
         {% endfor %}
       </ul>
     {% else %}
-      <p>Nog geen comments wees de eerste!</p>
+      <p>Nog geen reacties....</p>
+      <p>wees de eerste met iets leuks achter te laten!</p>
     {% endif %}
   </article>
 </section>
 
 <script src="/js/candidate.js"></script>
-
 
 {% render 'partials/foot.liquid' %}

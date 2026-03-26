@@ -133,20 +133,28 @@ app.get('/talent-awards/:year/:id', async function (request, response) {
 })
 
 app.post('/talent-awards/:year/:id', async function (request, response) {
-   await fetch(apiURL + 'nominations_comments', {
-      method: 'POST',
-      body: JSON.stringify({
-         nomination: request.params.id,
-         name: request.body.name,
-         comment: request.body.comment
-      }),
-      headers: {
-         'Content-Type': 'application/json;charset=UTF-8'
 
-      }
-   })
-   console.log(request.body)
-   response.redirect(303, `/talent-awards/${request.params.year}/${request.params.id}?success=true#comments`)
+   try {
+      await fetch(apiURL + 'nominations_comments', {
+         method: 'POST',
+         body: JSON.stringify({
+            nomination: request.params.id,
+            name: request.body.name,
+            comment: request.body.comment
+         }),
+         headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+
+         }
+      })
+      console.log(request.body)
+      response.redirect(303, `/talent-awards/${request.params.year}/${request.params.id}?success=true#comments`)
+   } catch (error) {
+      console.log(error)
+      response.redirect(303, `/talent-awards/${request.params.year}/${request.params.id}?success=false#comments`)
+
+   }
+
 
 })
 

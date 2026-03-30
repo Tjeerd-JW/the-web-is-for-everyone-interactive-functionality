@@ -9,9 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#pop-up h3').textContent = "Er ging iets mis"
         document.querySelector('#pop-up p').textContent = "probeer het later opnieuw"
         document.querySelector('#pop-up').classList.remove('hidden')
-
     }
+    setTimeout(() => {
+        // closePopup()
+        console.log("nu zou hij sluiten normaal")
+    }, 5000);
 })
+
 
 function closePopup() {
     // sluit de popup en haal de success uit de url

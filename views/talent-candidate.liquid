@@ -43,7 +43,6 @@
 {% assign quoteAuthor = candidate.external_stake_holder | default: fakeData.external_stake_holder %}
 {% include 'partials/quote.liquid', title: 'Aanbeveling externe stakeholder', quote: quoteText, author: quoteAuthor %}
 
-
 <section class="article-layout comments-section" id="comments">
   <form method="post" action="/talent-awards/2026/{{candidate.id}}">
     <h3>Reactie achterlaten</h3>
@@ -59,15 +58,6 @@
     </label>
     <button type="submit">Reageer</button>
   </form>
-
-<section id="pop-up" class="hidden article-layout comment-popup">
-  <article>
-    <h3></h3>
-    <p></p>
-    <button class="primary-button" onclick="closePopup()">sluiten</button>
-  </article>
-</section>
-
 
   <article>
     {% if comments.length > 0 %}
@@ -86,6 +76,17 @@
       <p>Nog geen reacties....</p>
       <p>wees de eerste met iets leuks achter te laten!</p>
     {% endif %}
+  </article>
+</section>
+
+<section id="pop-up" class="hidden article-layout comment-popup">
+  <article>
+    <h3></h3>
+    <p></p>
+    <button class="primary-button" onclick="closePopup()">sluiten</button>
+    <div>
+      <div></div>
+    </div>
   </article>
 </section>
 

@@ -1,13 +1,16 @@
 const url = window.location
 console.log(window.location)
+const form = document.querySelector('.comments-section form')
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('success') === 'true') {
-        document.querySelector('#pop-up h3').textContent = "Reactie succesvol geplaatst"
+        form.classList.add('hidden')
+        document.querySelector('#pop-up h3').textContent = "Reactie succesvol geplaatst!"
+        document.querySelector('#pop-up p').textContent = "Bedankt voor je deelname! je kan deze melding sluiten."
         document.querySelector('#pop-up').classList.remove('hidden')
     } else if (params.get('success') === 'false') {
         document.querySelector('#pop-up h3').textContent = "Er ging iets mis"
-        document.querySelector('#pop-up p').textContent = "probeer het later opnieuw"
+        document.querySelector('#pop-up p').textContent = "probeer het opnieuw"
         document.querySelector('#pop-up').classList.remove('hidden')
     }
     setTimeout(() => {

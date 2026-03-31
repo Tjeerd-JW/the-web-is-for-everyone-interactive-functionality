@@ -196,9 +196,17 @@ header {
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
-        max-width: 1400px;
+        max-width: 1200px;
         margin: auto;
-        padding: 0 .75rem;
+        justify-items: anchor-center;
+        background: var(--color-primary-100);
+        border-radius: 16px;
+        padding: 1.25rem 0;
+
+        h2 {
+            text-align: left;
+            width: 78%;
+        }
 
         blockquote {
             border-left: 5px solid var(--color-neutral-800);

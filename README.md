@@ -1,6 +1,4 @@
-# Server-Side Website
-
-Ontwerp en ontwikkel een server-side website voor een opdrachtgever
+# ADConnect
 
 De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/server-side-rendering-server-side-website/blob/main/docs/INSTRUCTIONS.md)
 
